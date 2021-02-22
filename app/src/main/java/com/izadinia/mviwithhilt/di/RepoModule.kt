@@ -1,10 +1,7 @@
 package com.izadinia.mviwithhilt.di
 
-import com.izadinia.mviwithhilt.network.IHttpCommands
-import com.izadinia.mviwithhilt.network.NetworkMapper
+import com.izadinia.mviwithhilt.network.OnboardingApi
 import com.izadinia.mviwithhilt.repository.MainRepo
-import com.izadinia.mviwithhilt.room.BlogDao
-import com.izadinia.mviwithhilt.room.CacheMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,16 +14,10 @@ object RepoModule {
     @Singleton
     @Provides
     fun provideMainRepo(
-        blogDao: BlogDao,
-        blogHttp: IHttpCommands,
-        cacheMapper: CacheMapper,
-        networkMapper: NetworkMapper
+        onboardingApi: OnboardingApi
     ): MainRepo {
         return MainRepo(
-            blogDao,
-            blogHttp,
-            cacheMapper,
-            networkMapper
+            onboardingApi
         )
     }
 }
